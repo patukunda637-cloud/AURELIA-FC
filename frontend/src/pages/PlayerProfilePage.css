@@ -1,0 +1,100 @@
+.profile-hero {
+  border-bottom: 1px solid var(--border);
+  background: radial-gradient(900px 420px at 15% 0%, rgba(217, 119, 6, 0.16), transparent 60%), var(--bg-base);
+  padding: 72px 0;
+}
+
+.profile-hero__inner {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.profile-hero__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 280 / 360;
+  background: var(--bg-elevated);
+}
+
+.profile-hero__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.profile-hero__placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #1a2440, #0e1730);
+}
+
+.profile-hero__copy h1 { font-size: clamp(2.25rem, 4vw, 3.5rem); margin: 12px 0 18px; }
+
+.profile-hero__bio { max-width: 640px; color: var(--text-muted); }
+
+.profile-hero__meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 30px 0 0;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+
+.profile-hero__meta dt { font-size: 0.6875rem; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 6px; }
+.profile-hero__meta dd { margin: 0; color: var(--text-primary); font-weight: 500; font-size: 0.9375rem; }
+.profile-hero__meta a:hover { color: var(--accent-light); }
+
+@media (max-width: 900px) {
+  .profile-hero__inner { grid-template-columns: 1fr; gap: 32px; }
+  .profile-hero__media { max-width: 320px; }
+  .profile-hero__meta { grid-template-columns: 1fr 1fr; }
+}
+
+.stat-tile {
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: center;
+}
+
+.stat-tile__value {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin: 0 0 10px;
+}
+
+.stat-tile__label { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); margin: 0; }
+
+.profile-panels {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
+}
+
+@media (max-width: 900px) {
+  .profile-panels { grid-template-columns: 1fr; gap: 48px; }
+}
+
+.profile-heading { font-size: 1.5rem; margin-bottom: 6px; }
+.profile-season { font-size: 0.8125rem; margin-bottom: 20px; letter-spacing: 0.08em; }
+
+.career { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+
+.career li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.career__current { background: var(--accent-soft); padding-inline: 16px; border-radius: var(--radius-sm); }
+
+.career__club { display: block; color: var(--text-primary); font-weight: 600; }
+.career__period { font-size: 0.8125rem; }
+.career__stats { display: flex; gap: 18px; font-size: 0.8125rem; color: var(--text-muted); }
+.career__stats strong { color: var(--text-primary); }

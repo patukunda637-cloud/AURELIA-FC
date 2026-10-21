@@ -1,0 +1,25 @@
+# ---- secrets / environment ----
+# Local environment overrides. Never commit these; `.env.example` is the template.
+.env
+.env.local
+.env.*.local
+
+# ---- backend build output ----
+backend/**/bin/
+backend/**/obj/
+
+# ---- frontend build output / dependencies ----
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ---- local tooling (e.g. the portable MySQL distribution) ----
+tools/
+
+# ---- editor / OS noise ----
+.vs/
+.vscode/
+.idea/
+*.user
+Thumbs.db
+.DS_Store

@@ -1,0 +1,45 @@
+.article { max-width: 900px; }
+
+.article__title { font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.15; margin: 16px 0 18px; }
+
+.article__excerpt { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 36px; }
+
+.article__hero { margin: 0 0 40px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
+.article__hero img { width: 100%; }
+
+.article__body p { font-size: 1.0625rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 20px; }
+
+.article__quote {
+  margin: 40px 0;
+  padding: 32px 36px;
+  border-left: 3px solid var(--accent-light);
+  background: var(--bg-surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.article__quote p {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 14px;
+  line-height: 1.4;
+}
+
+.article__quote cite { font-style: normal; color: var(--accent-light); font-size: 0.875rem; letter-spacing: 0.06em; }
+
+.article__share { margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--border); }
+.article__share h2 { font-size: 1.25rem; margin-bottom: 18px; }
+.article__share-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.article__share-actions .btn { padding: 11px 20px; font-size: 0.75rem; }
+
+.article__tags { list-style: none; display: flex; gap: 10px; flex-wrap: wrap; margin: 32px 0 0; padding: 0; }
+.article__tags li {
+  font-size: 0.8125rem;
+  color: var(--accent-light);
+  background: var(--accent-soft);
+  padding: 5px 14px;
+  border-radius: 999px;
+}
+
+.article__related-heading { font-size: 1.75rem; margin-bottom: 32px; }

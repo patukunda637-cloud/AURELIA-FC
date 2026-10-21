@@ -1,0 +1,70 @@
+.fixture-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px auto;
+  align-items: center;
+  gap: 28px;
+  padding: 24px 28px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.fixture-row:hover { border-color: rgba(251, 191, 36, 0.4); }
+
+.fixture-row__date { display: flex; flex-direction: column; gap: 4px; }
+
+.fixture-row__date-main {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.fixture-row__date-sub { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; }
+
+.fixture-row__teams {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.fixture-row__team {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.fixture-row__team--home { text-align: right; }
+.fixture-row__team--away { text-align: left; }
+
+.fixture-row__score {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  min-width: 68px;
+}
+
+.fixture-row__score--vs { color: var(--text-dim); font-size: 1rem; }
+
+.fixture-row__venue {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.fixture-row__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.fixture-row__actions .btn { padding: 11px 18px; font-size: 0.75rem; }
+
+@media (max-width: 1100px) {
+  .fixture-row { grid-template-columns: 1fr; gap: 18px; }
+  .fixture-row__teams { text-align: left; grid-template-columns: 1fr; gap: 6px; }
+  .fixture-row__team--home, .fixture-row__team--away { text-align: left; }
+}

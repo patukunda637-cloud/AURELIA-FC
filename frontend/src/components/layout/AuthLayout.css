@@ -1,0 +1,131 @@
+.auth-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  background:
+    radial-gradient(1000px 480px at 50% -10%, rgba(217, 119, 6, 0.14), transparent 60%),
+    var(--bg-base);
+}
+
+.auth-shell__header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.auth-shell__brand .brand__name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+}
+
+.auth-shell__eyebrow {
+  margin: 8px 0 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.3em;
+  color: var(--accent-light);
+}
+
+.auth-shell__main {
+  width: 100%;
+  max-width: 468px;
+}
+
+.auth-shell__footer {
+  margin-top: 32px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.auth-shell__footer a:hover { color: var(--accent-light); }
+
+.auth-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-card);
+}
+
+.auth-card__title {
+  font-size: 1.75rem;
+  margin-bottom: 8px;
+}
+
+.auth-card__sub {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  margin-bottom: 28px;
+}
+
+.auth-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+  font-size: 0.875rem;
+}
+
+.auth-card__check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.auth-card__link { color: var(--accent-light); font-weight: 500; }
+.auth-card__link:hover { text-decoration: underline; }
+
+.auth-card__divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 26px 0;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.auth-card__divider::before,
+.auth-card__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.auth-card__oauth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.auth-card__foot {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.password-strength {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.password-strength__bar {
+  height: 4px;
+  flex: 1;
+  border-radius: 999px;
+  background: var(--border);
+  transition: background var(--transition);
+}
+
+.password-strength__bar--on { background: var(--accent-light); }
+.password-strength__label { font-size: 0.75rem; color: var(--text-dim); margin-top: 6px; }

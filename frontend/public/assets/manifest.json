@@ -1,0 +1,362 @@
+{
+  "hero-about": {
+    "file": "assets/images/hero-about.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "about-club"
+  },
+  "arena-aerial": {
+    "file": "assets/images/arena-aerial.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "about-club"
+  },
+  "executive-arthur": {
+    "file": "assets/images/executive-arthur.jpg",
+    "w": 1152,
+    "h": 896,
+    "page": "about-club"
+  },
+  "executive-adrianna": {
+    "file": "assets/images/executive-adrianna.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "about-club"
+  },
+  "stadium-map": {
+    "file": "assets/images/stadium-map.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "contact"
+  },
+  "gallery-vane-winning-goal": {
+    "file": "assets/images/gallery-vane-winning-goal.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "gallery"
+  },
+  "gallery-vance-tactics": {
+    "file": "assets/images/gallery-vance-tactics.jpg",
+    "w": 1184,
+    "h": 864,
+    "page": "gallery"
+  },
+  "gallery-slide-tackle": {
+    "file": "assets/images/gallery-slide-tackle.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "gallery"
+  },
+  "gallery-pitch-grass": {
+    "file": "assets/images/gallery-pitch-grass.jpg",
+    "w": 1184,
+    "h": 864,
+    "page": "gallery"
+  },
+  "gallery-training-drills": {
+    "file": "assets/images/gallery-training-drills.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "gallery"
+  },
+  "gallery-crowd-roar": {
+    "file": "assets/images/gallery-crowd-roar.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "gallery"
+  },
+  "gallery-home-kit-detail": {
+    "file": "assets/images/gallery-home-kit-detail.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "gallery"
+  },
+  "gallery-pre-game-drills": {
+    "file": "assets/images/gallery-pre-game-drills.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "gallery"
+  },
+  "gallery-morning-light": {
+    "file": "assets/images/gallery-morning-light.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "gallery"
+  },
+  "gallery-locker-room": {
+    "file": "assets/images/gallery-locker-room.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "gallery"
+  },
+  "hero-home": {
+    "file": "assets/images/hero-home.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "home"
+  },
+  "hero-band-1": {
+    "file": "assets/images/hero-band-1.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "home"
+  },
+  "player-marcus-vane": {
+    "file": "assets/images/player-marcus-vane.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "home"
+  },
+  "player-elena-cross": {
+    "file": "assets/images/player-elena-cross.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "home"
+  },
+  "player-david-okafor": {
+    "file": "assets/images/player-david-okafor.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "home"
+  },
+  "news-partnership": {
+    "file": "assets/images/news-partnership.jpg",
+    "w": 1248,
+    "h": 832,
+    "page": "home"
+  },
+  "news-hattrick": {
+    "file": "assets/images/news-hattrick.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "home"
+  },
+  "hero-match": {
+    "file": "assets/images/hero-match.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "match-detail"
+  },
+  "motm-marcus-vane": {
+    "file": "assets/images/motm-marcus-vane.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "match-detail"
+  },
+  "article-vane-derby-hero": {
+    "file": "assets/images/article-vane-derby-hero.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "news-article"
+  },
+  "article-vane-derby-inline": {
+    "file": "assets/images/article-vane-derby-inline.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "news-article"
+  },
+  "news-featured-partnership": {
+    "file": "assets/images/news-featured-partnership.jpg",
+    "w": 1344,
+    "h": 768,
+    "page": "news"
+  },
+  "news-okafor": {
+    "file": "assets/images/news-okafor.jpg",
+    "w": 1344,
+    "h": 768,
+    "page": "news"
+  },
+  "news-vane-hattrick": {
+    "file": "assets/images/news-vane-hattrick.jpg",
+    "w": 1344,
+    "h": 768,
+    "page": "news"
+  },
+  "news-young-prodigy": {
+    "file": "assets/images/news-young-prodigy.jpg",
+    "w": 1344,
+    "h": 768,
+    "page": "news"
+  },
+  "news-stadium-roof": {
+    "file": "assets/images/news-stadium-roof.jpg",
+    "w": 1344,
+    "h": 768,
+    "page": "news"
+  },
+  "news-u18-cup": {
+    "file": "assets/images/news-u18-cup.jpg",
+    "w": 1344,
+    "h": 768,
+    "page": "news"
+  },
+  "news-summer-tour": {
+    "file": "assets/images/news-summer-tour.jpg",
+    "w": 1344,
+    "h": 768,
+    "page": "news"
+  },
+  "player-portrait-marcus-vane": {
+    "file": "assets/images/player-portrait-marcus-vane.jpg",
+    "w": 896,
+    "h": 1152,
+    "page": "player-profile"
+  },
+  "squad-thomas-reign": {
+    "file": "assets/images/squad-thomas-reign.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "players"
+  },
+  "squad-david-okafor": {
+    "file": "assets/images/squad-david-okafor.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "players"
+  },
+  "squad-lena-hartwell": {
+    "file": "assets/images/squad-lena-hartwell.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "players"
+  },
+  "squad-elena-cross": {
+    "file": "assets/images/squad-elena-cross.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "players"
+  },
+  "squad-james-kato": {
+    "file": "assets/images/squad-james-kato.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "players"
+  },
+  "squad-marcus-vane": {
+    "file": "assets/images/squad-marcus-vane.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "players"
+  },
+  "squad-sofia-almeida": {
+    "file": "assets/images/squad-sofia-almeida.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "players"
+  },
+  "squad-riku-tanaka": {
+    "file": "assets/images/squad-riku-tanaka.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "players"
+  },
+  "shop-hero-kit": {
+    "file": "assets/images/shop-hero-kit.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "shop"
+  },
+  "product-home-kit": {
+    "file": "assets/images/product-home-kit.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "shop"
+  },
+  "product-away-kit": {
+    "file": "assets/images/product-away-kit.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "shop"
+  },
+  "product-third-kit": {
+    "file": "assets/images/product-third-kit.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "shop"
+  },
+  "product-training-jersey": {
+    "file": "assets/images/product-training-jersey.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "shop"
+  },
+  "product-track-jacket": {
+    "file": "assets/images/product-track-jacket.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "shop"
+  },
+  "product-scarf": {
+    "file": "assets/images/product-scarf.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "shop"
+  },
+  "product-cap": {
+    "file": "assets/images/product-cap.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "shop"
+  },
+  "product-football": {
+    "file": "assets/images/product-football.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "shop"
+  },
+  "team-first": {
+    "file": "assets/images/team-first.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "teams"
+  },
+  "team-reserve": {
+    "file": "assets/images/team-reserve.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "teams"
+  },
+  "team-u21": {
+    "file": "assets/images/team-u21.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "teams"
+  },
+  "team-u18": {
+    "file": "assets/images/team-u18.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "teams"
+  },
+  "team-women-first": {
+    "file": "assets/images/team-women-first.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "teams"
+  },
+  "team-women-reserve": {
+    "file": "assets/images/team-women-reserve.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "teams"
+  },
+  "hero-tickets": {
+    "file": "assets/images/hero-tickets.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "tickets"
+  },
+  "hospitality-royal-lounge": {
+    "file": "assets/images/hospitality-royal-lounge.jpg",
+    "w": 1024,
+    "h": 1024,
+    "page": "tickets"
+  },
+  "hospitality-executive-box": {
+    "file": "assets/images/hospitality-executive-box.jpg",
+    "w": 1536,
+    "h": 672,
+    "page": "tickets"
+  }
+}

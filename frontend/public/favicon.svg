@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Aurelia FC">
+  <rect width="64" height="64" rx="12" fill="#050918" />
+  <path d="M32 8 52 20v24L32 56 12 44V20Z" fill="none" stroke="#FBBF24" stroke-width="2.5" stroke-linejoin="round" />
+  <path d="M24 42 32 20l8 22h-4.6l-1.5-4.6h-3.8L28.6 42Zm6.3-8.2h3.4L32 27.4Z" fill="#FBBF24" />
+</svg>

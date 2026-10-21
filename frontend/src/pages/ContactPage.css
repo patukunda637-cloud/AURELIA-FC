@@ -1,0 +1,75 @@
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 64px;
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+.contact-heading { font-size: clamp(1.5rem, 2.4vw, 2rem); margin-bottom: 28px; }
+
+.contact-form { max-width: 620px; }
+
+.dept-list { display: flex; flex-direction: column; gap: 18px; }
+
+.dept-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.dept-card h3 { font-size: 1rem; margin-bottom: 10px; letter-spacing: 0.04em; }
+.dept-card a { display: block; margin-bottom: 6px; }
+.dept-card a:hover { text-decoration: underline; }
+.dept-card p { margin: 0; font-size: 0.875rem; color: var(--text-muted); }
+
+.location {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.location__copy h3 { font-size: 1.5rem; margin-bottom: 12px; }
+.location__copy p { font-size: 0.9375rem; margin-bottom: 8px; }
+
+.location__map { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
+.location__map img { width: 100%; }
+
+@media (max-width: 900px) {
+  .location { grid-template-columns: 1fr; gap: 28px; }
+}
+
+.contact-faq { max-width: 840px; }
+
+.accordion { border-top: 1px solid var(--border); }
+
+.accordion__item { border-bottom: 1px solid var(--border); }
+
+.accordion__trigger {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.accordion__trigger:hover { color: var(--accent-light); }
+
+.accordion__icon { color: var(--accent-light); font-size: 1.375rem; line-height: 1; flex-shrink: 0; }
+
+.accordion__panel { padding: 0 0 24px; }
+.accordion__panel p { margin: 0; color: var(--text-muted); max-width: 680px; }
+
+.accordion__item--open .accordion__trigger { color: var(--accent-light); }

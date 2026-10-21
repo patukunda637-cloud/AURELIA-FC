@@ -1,0 +1,32 @@
+.notfound {
+  padding-block: 120px;
+}
+
+.notfound__inner {
+  text-align: center;
+  max-width: 620px;
+}
+
+.notfound__code {
+  font-size: clamp(5rem, 16vw, 9rem);
+  line-height: 1;
+  margin: 8px 0 0;
+  background: linear-gradient(180deg, var(--accent-light), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.notfound__title { margin-bottom: 16px; }
+
+.notfound__copy {
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.notfound__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

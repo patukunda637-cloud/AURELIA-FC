@@ -1,0 +1,16 @@
+.standings__table td,
+.standings__table th { padding: 14px 16px; }
+
+.standings__table th:first-child,
+.standings__table td:first-child { width: 64px; }
+
+.standings__pos { color: var(--text-muted); }
+
+.standings__club { color: var(--text-primary); font-weight: 500; }
+.standings__club a:hover { color: var(--accent-light); }
+
+.standings__pts { color: var(--accent-light); font-weight: 700; }
+
+.standings__row--highlight { background: var(--accent-soft); }
+.standings__row--highlight td { border-bottom-color: rgba(251, 191, 36, 0.3); }
+.standings__row--highlight .standings__pos { color: var(--accent-light); font-weight: 700; }

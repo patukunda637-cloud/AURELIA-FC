@@ -1,0 +1,18 @@
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+
+.league-table { min-width: 760px; }
+.league-table td, .league-table th { padding: 16px 18px; white-space: nowrap; }
+.league-table__pos { color: var(--text-muted); }
+.league-table__club { color: var(--text-primary); font-weight: 500; }
+.league-table__pts { color: var(--accent-light); font-weight: 700; }
+
+.league-table__row--ours { background: var(--accent-soft); }
+.league-table__row--ours .league-table__pos { color: var(--accent-light); font-weight: 700; }
+.league-table__row--ucl .league-table__pos { border-left: 3px solid var(--accent-light); }
+.league-table__row--relegation .league-table__pos { border-left: 3px solid var(--danger); }
+
+.legend { display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap; font-size: 0.875rem; }
+.legend__item { display: inline-flex; align-items: center; gap: 10px; color: var(--text-muted); }
+.legend__swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+.legend__swatch--ucl { background: var(--accent-light); }
+.legend__swatch--rel { background: var(--danger); }
