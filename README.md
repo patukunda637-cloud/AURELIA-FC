@@ -111,7 +111,60 @@ npm install
 
 ## Running the app
 
-Two terminals.
+### Option A — VS Code: press Ctrl+F5 (recommended)
+
+Open the **project root** (`AURELIA FC/`, the folder containing `.vscode/`) in VS Code and
+press **Ctrl+F5** (Run Without Debugging) — or **F5** to run with the debugger attached.
+Pick **`AURELIA FC (backend + web)`** if VS Code asks which configuration to use.
+
+One keypress starts both servers:
+
+| Server | URL | Started by |
+| --- | --- | --- |
+| ASP.NET Core API | <http://127.0.0.1:5080> (Swagger: `/swagger`) | task `api-run` |
+| Vite web app | <http://localhost:5173> | task `web-dev` |
+
+The frontend is **opened in your default browser automatically** once Vite is ready. Both
+servers stay running until you press the stop button (or Ctrl+F5 again).
+
+What Ctrl+F5 does, in order:
+
+1. **`kill-dev-ports`** — frees TCP `5080` and `5173`, killing any stale server, so a second
+   Ctrl+F5 never fails with `EADDRINUSE` or a locked `AureliaFc.Api.exe`
+   (`MSB3027` / `MSB3021`).
+2. **`api-build`** — compiles the API *before* anything starts, so the executable is never
+   locked while being written.
+3. **`api-run`** — starts the API on `http://127.0.0.1:5080` with
+   `ASPNETCORE_ENVIRONMENT=Development` (MySQL + dev JWT key).
+4. **`web-dev`** — starts Vite on `http://localhost:5173` and opens the browser.
+
+`AURELIA FC (backend + web)` is also the **default build task**, so **Ctrl+Shift+B** does the
+same thing without the debugger.
+
+Other tasks are available via **Terminal → Run Task…**:
+
+| Task | Purpose |
+| --- | --- |
+| `api-run` / `web-dev` | start just one server |
+| `api-test` | backend integration tests (needs MySQL running + seeded) |
+| `web-test` / `web-build` | frontend Vitest suite / production build |
+
+**Required VS Code extensions** (VS Code prompts to install them from
+`.vscode/extensions.json`):
+
+| Extension | ID | Why |
+| --- | --- | --- |
+| C# Dev Kit | `ms-dotnettools.csdevkit` | C# language services, solution explorer, debugger |
+| C# | `ms-dotnettools.csharp` | installed automatically with the Dev Kit |
+| ESLint | `dbaeumer.vscode-eslint` | lints the React/TS frontend |
+| Prettier | `esbenp.prettier-vscode` | optional; formatter referenced by `settings.json` |
+| Vitest | `vitest.explorer` | optional; run frontend tests from the sidebar |
+
+> Ctrl+F5 still starts both servers if the optional extensions are absent — the C# Dev Kit
+> is only needed for the *debugging* (F5) path. The `Node.js` runtime already on your PATH
+> is what runs Vite.
+
+### Option B — two terminals manually
 
 **Terminal 1 — API** (listens on `http://127.0.0.1:5080`):
 
@@ -129,6 +182,9 @@ npm run dev
 ```
 
 Then open <http://localhost:5173>. API docs are at <http://127.0.0.1:5080/swagger>.
+
+> **MySQL must already be running** before either option — neither starts the database.
+> See [Setup from scratch](#setup-from-scratch).
 
 To generate a BCrypt hash for an admin account:
 
@@ -167,6 +223,11 @@ Copy `frontend/.env.example` to `frontend/.env` and adjust:
 ```
 AURELIA FC/
 ├── AURELIA-PROMPT.md              # Original task specification
+├── .vscode/                       # Ctrl+F5 setup for the whole stack
+│   ├── launch.json                # Compound config: API debug + Vite debug
+│   ├── tasks.json                 # Port cleanup, build, api-run, web-dev
+│   ├── settings.json              # Workspace settings
+│   └── extensions.json            # Recommended extensions
 ├── design reference/              # 16 Figma frame PDF exports (source of truth)
 ├── database/
 │   ├── 01_schema.sql              # Database + 34 tables
@@ -339,6 +400,11 @@ against the live API and database):
 | `Access denied for user 'aurelia_app'` | Re-run `03_create_admin.sql`, or fix `ConnectionStrings__Aurelia`. |
 | `dotnet run` fails with a runtime-not-found error | Install the .NET 9 runtime, or keep `<RollForward>LatestMajor</RollForward>` and a newer runtime. |
 | `npm install` fails with `ECONNRESET` / `ENOTCACHED` | `registry.npmjs.org` is unreachable from your network. Either use a machine with registry access, set a proxy (`npm config set proxy http://host:port` and `npm config set https-proxy http://host:port`), or install from a reachable mirror: `npm install --registry=https://registry.npmmirror.com`. |
+| Ctrl+F5 fails with `MSB3027` / `MSB3021` ("file is locked by … AureliaFc.Api") | A previous API instance is still running. The `kill-dev-ports` task handles this automatically; if you started the API outside VS Code, stop it first (or re-run Ctrl+F5, which frees the port). |
+| Ctrl+F5 fails with `EADDRINUSE` on 5080/5173 | Same cause — a stale server. `kill-dev-ports` frees both ports at the start of every run. |
+| Ctrl+F5 opens no browser | Vite only auto-opens when it owns a fresh start. Stop the run, then Ctrl+F5 again; or just navigate to <http://localhost:5173> manually. |
+| VS Code shows no `AURELIA FC (backend + web)` configuration | VS Code was opened on a subfolder. Open the project **root** (`AURELIA FC/`), not `frontend/` or `backend/`. |
+| F5 (debug) reports the C# debugger is missing | Install the **C# Dev Kit** extension (`ms-dotnettools.csdevkit`). Ctrl+F5 does not need it. |
 
 ## Known limitations
 

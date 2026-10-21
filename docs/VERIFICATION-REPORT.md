@@ -188,3 +188,27 @@ npm run build
 npm test                                        # 20 tests
 npm run dev                                     # http://localhost:5173
 ```
+
+---
+
+## 7. VS Code one-key run (Ctrl+F5)
+
+`.vscode/{tasks,launch,settings,extensions}.json` run the whole stack from one keypress.
+Verified by executing the exact task command chain (`kill-dev-ports` → `api-build` →
+`api-run` → `web-dev`) against the real project paths.
+
+| Check | Result |
+| --- | --- |
+| All four `.vscode/*.json` parse as valid JSON(C) | Pass |
+| `kill-dev-ports` frees 5080 + 5173 while both servers are live | Pass — stopped PIDs 8740 / 29456, 0 listeners after |
+| `api-build` (`dotnet build backend/AureliaFc.Api/…`) | Pass — 0 warnings, 0 errors |
+| `api-run` emits the matcher's ready line | Pass — `Now listening on: http://127.0.0.1:5080` |
+| `web-dev` emits the matcher's ready line | Pass — `Local: http://localhost:5173/` |
+| API reachable through the Vite proxy at :5173 | Pass — `/api/players` → 26 players |
+| Guarded route still protected via proxy | Pass — `/api/orders/mine` → 401 |
+| SPA deep link served by dev server | Pass — `/players` → 200 |
+| `.vscode/` tracked by git (not ignored) | Pass — `.gitignore` rule removed |
+
+> The `kill-dev-ports` step is what makes repeated Ctrl+F5 safe: without it a second run
+> hits `EADDRINUSE` (Vite) or `MSB3027`/`MSB3021` (locked `AureliaFc.Api.exe`).
+

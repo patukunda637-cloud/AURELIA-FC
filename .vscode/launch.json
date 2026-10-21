@@ -1,0 +1,66 @@
+{
+  // ===========================================================================
+  // AURELIA FC — VS Code debug configurations
+  //
+  // Press F5 (or Ctrl+F5 for Run Without Debugging) and pick:
+  //
+  //   "AURELIA FC (backend + web)"  ← default; starts BOTH servers
+  //                                   API       -> http://127.0.0.1:5080
+  //                                   Frontend  -> http://localhost:5173
+  //
+  //   "Aurelia FC API"              backend only, with the managed debugger
+  //   "Aurelia FC Web (Vite)"       frontend only, for browser devtools
+  //
+  // The compound configuration's preLaunchTask builds the API and frees
+  // ports 5080/5173 first, so pressing F5 repeatedly never fails with a locked
+  // executable or EADDRINUSE. Both servers stay alive after launch.
+  // ===========================================================================
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "AURELIA FC (backend + web)",
+      "configurations": ["Aurelia FC API", "Aurelia FC Web (Vite)"],
+      "preLaunchTask": "AURELIA FC (backend + web)",
+      "stopAll": true
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Aurelia FC API",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "api-build",
+      "program": "${workspaceFolder}/backend/AureliaFc.Api/bin/Debug/net9.0/AureliaFc.Api.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/backend/AureliaFc.Api",
+      // Development picks up appsettings.Development.json: the MySQL
+      // connection string (127.0.0.1:3306 / aurelia_fc) and the dev JWT key.
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://127.0.0.1:5080",
+        "DOTNET_ROLL_FORWARD": "LatestMajor"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/swagger"
+      },
+      "console": "internalConsole",
+      "justMyCode": false
+    },
+    {
+      "name": "Aurelia FC Web (Vite)",
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "web-dev",
+      "cwd": "${workspaceFolder}/frontend",
+      // Attaches the debugger to the Vite dev server. The frontend itself is
+      // served at http://localhost:5173 and is opened automatically by Vite.
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--open"],
+      "env": { "VITE_API_TARGET": "http://127.0.0.1:5080" },
+      "console": "internalConsole",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

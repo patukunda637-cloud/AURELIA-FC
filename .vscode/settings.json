@@ -1,0 +1,40 @@
+{
+  // ===========================================================================
+  // AURELIA FC — workspace settings
+  // ===========================================================================
+  "files.eol": "\r\n",
+
+  // ---------------------------------------------------------------------------
+  // Recommended extensions (VS Code prompts to install these on first open).
+  //   ms-dotnettools.csdevkit          C# Dev Kit  — C# language + debugger
+  //   ms-dotnettools.csharp            C# extension (installed with the Dev Kit)
+  //   dbaeumer.vscode-eslint           ESLint for the React/TS frontend
+  //   esbenp.prettier-vscode           Formatting (optional, matches npm run lint)
+  //   vitest.explorer                  Vitest test explorer (optional)
+  // ---------------------------------------------------------------------------
+  "dotnet.defaultSolution": "",
+
+  // Auto-install frontend dependencies the first time the web task runs.
+  "npm.autoDetect": "on",
+
+  // Open the app in the default browser as soon as the dev servers are up.
+  "task.autoDetect": "on",
+  "debug.internalConsoleOptions": "openOnSessionStart",
+
+  // Keep terminal noise down and always use the workspace root for tasks.
+  "terminal.integrated.cwd": "${workspaceFolder}",
+
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  "eslint.workingDirectories": [{ "directory": "frontend", "changeProcessCWD": true }],
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bin": true,
+    "**/obj": true,
+    "**/dist": true,
+    "tools/": true
+  }
+}

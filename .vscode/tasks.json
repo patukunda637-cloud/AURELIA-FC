@@ -1,0 +1,207 @@
+{
+  // ===========================================================================
+  // AURELIA FC — VS Code build & run tasks
+  //
+  // Orchestration for Ctrl+F5 (see launch.json → "AURELIA FC (backend + web)"):
+  //
+  //   1. kill-dev-ports   frees 5080 / 5173 so a stale server can never cause
+  //                       EADDRINUSE or a build-lock (MSB3027/MSB3021) failure.
+  //   2. api-build        compiles the ASP.NET Core API (net9.0). Runs as a
+  //                       preLaunchTask *before* any server starts, so the
+  //                       executable is never locked while it is being written.
+  //   3. api-run          starts the API on http://127.0.0.1:5080.
+  //   4. web-dev          starts Vite on http://localhost:5173 and opens the
+  //                       default browser once the server is ready.
+  //
+  // "AURELIA FC (backend + web)" is the default build task (Ctrl+Shift+B) and
+  // the preLaunchTask for the compound debug configuration.
+  // ===========================================================================
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "kill-dev-ports",
+      "detail": "Frees TCP 5080 (API) and 5173 (Vite) so restarts never hit EADDRINUSE or a locked executable.",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "$ports = @(5080, 5173); foreach ($port in $ports) { Get-NetTCPConnection -State Listen -LocalPort $port -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue; Write-Host \"Freed port $port (stopped PID $_)\" } }; Write-Host 'Dev ports are free.'"
+      ],
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "api-build",
+      "detail": "Builds backend/AureliaFc.Api (net9.0).",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/backend/AureliaFc.Api/AureliaFc.Api.csproj"
+      ],
+      "options": { "cwd": "${workspaceFolder}" },
+      "dependsOn": "kill-dev-ports",
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "web-install",
+      "detail": "Installs frontend npm dependencies when node_modules is missing.",
+      "type": "process",
+      "command": "npm",
+      "args": ["install"],
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "api-run",
+      "detail": "Runs the ASP.NET Core API on http://127.0.0.1:5080 (Development settings).",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--no-build",
+        "--project",
+        "${workspaceFolder}/backend/AureliaFc.Api/AureliaFc.Api.csproj"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        // Development is what the project's appsettings.Development.json targets
+        // (MySQL at 127.0.0.1:3306 / database aurelia_fc + the dev JWT key) and
+        // is the environment the integration tests and README instructions use.
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "ASPNETCORE_URLS": "http://127.0.0.1:5080",
+          "DOTNET_ROLL_FORWARD": "LatestMajor"
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "aurelia-api",
+        "source": "dotnet",
+        // The API prints this line once Kestrel is listening, which is what
+        // makes this background task "ready" for launch.json.
+        "pattern": {
+          "regexp": "^Now listening on:\\s+(https?://\\S+)$",
+          "uri": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^\\s*(Building|Waiting for|Determining projects)",
+          "endsPattern": "^Now listening on:\\s+"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "group": "aurelia-stack"
+      }
+    },
+    {
+      "label": "web-dev",
+      "detail": "Runs the Vite dev server on http://localhost:5173 (proxies /api to 127.0.0.1:5080) and opens the browser.",
+      "type": "process",
+      "command": "npm",
+      // --open makes Vite launch the default browser the moment it is ready,
+      // which satisfies "open http://localhost:5173 automatically". It is a
+      // Vite flag, so no OS-specific `start`/`xdg-open` shim is needed.
+      "args": ["run", "dev", "--", "--open"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend",
+        "env": {
+          // Explicit, though it already matches vite.config.ts' default.
+          "VITE_API_TARGET": "http://127.0.0.1:5080"
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "aurelia-web",
+        "source": "vite",
+        // Colour codes are stripped with \x1b before matching (see below),
+        // so this matches "Local:   http://localhost:5173/".
+        "pattern": {
+          "regexp": "Local:\\s+(https?://\\S+)",
+          "uri": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^\\s*VITE v[\\d.]+",
+          "endsPattern": "Local:\\s+https?://localhost:\\d+/"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "group": "aurelia-stack"
+      }
+    },
+    {
+      "label": "AURELIA FC (backend + web)",
+      "detail": "Builds the API, then starts the API on :5080 and Vite on :5173. This is the task Ctrl+F5 and Ctrl+Shift+B run.",
+      "dependsOrder": "sequence",
+      "dependsOn": ["api-build", "api-run", "web-dev"],
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "api-test",
+      "detail": "Runs the backend integration tests (requires MySQL running and seeded).",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "test",
+        "${workspaceFolder}/backend/AureliaFc.Api.Tests/AureliaFc.Api.Tests.csproj"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "DOTNET_ROLL_FORWARD": "LatestMajor"
+        }
+      },
+      "group": "test",
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "web-test",
+      "detail": "Runs the frontend Vitest suite.",
+      "type": "process",
+      "command": "npm",
+      "args": ["test"],
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "web-build",
+      "detail": "Type-checks and production-builds the frontend.",
+      "type": "process",
+      "command": "npm",
+      "args": ["run", "build"],
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "group": { "kind": "build" },
+      "problemMatcher": ["$tsc"]
+    }
+  ]
+}

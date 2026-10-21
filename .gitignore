@@ -18,7 +18,6 @@ tools/
 
 # ---- editor / OS noise ----
 .vs/
-.vscode/
 .idea/
 *.user
 Thumbs.db
